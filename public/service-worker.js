@@ -4,8 +4,8 @@ var CACHE_NAME = "gih-cache-v1";
 var CACHED_URLS = [
     "/offline-vue/",
     "/offline-vue/index.html",
-    "/offline-vue/app.f5b81c4a.js", // Use a specific file with a content-based hash (example)
-    '/offline-vue/manifest.json'
+    '/offline-vue/manifest.json',
+    '/offline-vue/favicon.ico',
     // Add more URLs here that you want to cache
 ];
 
@@ -30,7 +30,7 @@ self.addEventListener("install", function (event) {
                     return fetch(url)
                         .then(function (response) {
                             // Get the cache key based on the URL type
-                            const cacheKey = getCacheKey(url);
+                            const cacheKey = url;
                             // Cache the response with the appropriate cache key
                             cache.put(cacheKey, response.clone());
                         })
